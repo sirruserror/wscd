@@ -11,7 +11,7 @@ try:
         if i == "-d" or i == "--debug":
             debug = True
         else:
-            printf(f"ERROR! Unkown argument '{i}'")
+            print(f"ERROR! Unkown argument '{i}'")
             exit(1)
 
 except Exception:
