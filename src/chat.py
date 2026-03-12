@@ -3,6 +3,8 @@ import websockets
 import machine
 import signal
 
+signal.signal(signal.SIGTSTP, signal.SIG_IGN)
+
 MAX_RETRIES = 3
 RETRY_DELAY = 3
 
@@ -118,4 +120,4 @@ async def chat(tunnel_dict):
             else:
                 print(f"\n--- Failed to reconnect after {MAX_RETRIES} attempts. ---")
 
-    print("--- Session Ended, use Ctrl Z to exit ---")
+    print("--- Session Ended ---")
