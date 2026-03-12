@@ -3,6 +3,8 @@ import websockets
 import machine
 import signal
 
+signal.signal(signal.SIGTSTP, signal.SIG_IGN)
+
 MAX_RETRIES = 3
 RETRY_DELAY = 3
 

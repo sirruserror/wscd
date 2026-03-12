@@ -140,6 +140,7 @@ async def handle_command(websocket, message):
         await send_system(websocket, "Available commands:")
         await send_system(websocket, "  /users - List connected users")
         await send_system(websocket, "  /nick <name> - Change your nickname")
+        await send_system(websocket, "  /exit - Leave the chat")
         await send_system(websocket, "  /dm <id> <msg> - Send a direct message")
         await send_system(websocket, "  /accept <id> - Accept a DM request")
         await send_system(websocket, "  /decline <id> - Decline a DM request")
@@ -159,6 +160,11 @@ async def handle_command(websocket, message):
             await send_system(websocket, "  /makemod <id> - Promote to mod")
             await send_system(websocket, "  /removemod <id> - Demote from mod")
             await send_system(websocket, "  /makeadmin <id> - Promote to admin")
+        return True
+
+    if cmd in ("/exit", "/quit"):
+        await send_system(websocket, "Goodbye!")
+        await websocket.close()
         return True
 
     if cmd == "/users":
