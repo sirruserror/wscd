@@ -13,8 +13,20 @@ def detect_globserver():
         except Exception:
             continue
     return None
-
+global globserv
 globserv = detect_globserver()
+
+def check_globserver(server):
+    global globserv
+    try:
+        r = requests.get(server + "/servers", timeout=2)
+        if r.status_code == 200:
+            globserv = server
+            return True
+    except Exception:
+         pass
+    return False
+
 
 def parse_room_id(id_string):
     pattern = r"^(\d{4})-([A-Z]{2})-(\d{4})$"

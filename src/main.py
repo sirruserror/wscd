@@ -23,8 +23,10 @@ if __name__ == "__main__":
         print(f"Globserver found at {ids.globserv}")
     else:
         print("No globserver found on localhost.")
-        print("Start one with: python3 src/globserver/server.py")
-        exit(1)
+        print("Start one with: python3 src/globserver/server.py or enter globserver link: ", end="")
+        if ids.check_globserver(input("")) != True:
+            print("Invalid globserver link!")
+            quit(1)
     room_id = input("Enter RoomID <year>-<region>-<4-digits> : ")
     if debug:
         print(f"DEBUG: ID entered: {room_id}")
